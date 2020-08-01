@@ -19,7 +19,7 @@ import com.github.adminfaces.starter.model.Car;
 import com.github.adminfaces.starter.util.Utils;
 import com.github.adminfaces.template.exception.AccessDeniedException;
 
-import net.brilliant.common.CommonUtility;
+import net.aquarium.common.CommonUtility;
 
 /**
  * @author rmpestano

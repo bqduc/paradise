@@ -10,7 +10,7 @@
     <name>Aquarium - Web administration</name>
 
     <parent>
-		<groupId>net.brilliant</groupId>
+		<groupId>net.aquarium</groupId>
 		<artifactId>aquariums</artifactId>
         <version>0.1</version>
         <relativePath>../pom.xml</relativePath>

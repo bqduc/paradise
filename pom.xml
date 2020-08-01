@@ -11,7 +11,7 @@
 		<relativePath />
 	</parent>	
 	
-	<groupId>net.brilliant</groupId>
+	<groupId>net.aquarium</groupId>
 	<artifactId>aquariums</artifactId>
 	<packaging>pom</packaging>
 	<version>0.1</version>

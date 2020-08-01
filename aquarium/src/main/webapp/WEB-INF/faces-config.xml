@@ -11,7 +11,7 @@
 	    </locale-config>
 	
 			<resource-bundle>
-				<base-name>net.brilliant.i18n.CustomResourceBundle</base-name>
+				<base-name>net.aquarium.i18n.CustomResourceBundle</base-name>
 				<var>messages</var>
 	    </resource-bundle>	
 	    
