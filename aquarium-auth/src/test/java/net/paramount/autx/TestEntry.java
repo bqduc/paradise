@@ -6,9 +6,9 @@ package net.paramount.autx;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import net.aquarium.auth.comp.JWTServiceImpl;
-import net.aquarium.auth.entity.UserAccountProfile;
-import net.aquarium.framework.entity.auth.AuthenticationDetails;
+import net.ecoparadise.auth.comp.JWTServiceImpl;
+import net.ecoparadise.auth.entity.UserAccountProfile;
+import net.ecoparadise.framework.entity.auth.AuthenticationDetails;
 
 /**
  * @author ducbq

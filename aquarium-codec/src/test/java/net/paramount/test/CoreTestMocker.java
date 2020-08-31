@@ -20,12 +20,12 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import net.aquarium.common.CommonConstants;
-import net.aquarium.exceptions.CryptographyException;
-import net.aquarium.security.CryptographyAlgorithm;
-import net.aquarium.security.GlobalCryptogramRepository;
-import net.aquarium.security.SecretAlgorithm;
-import net.aquarium.security.base.Cryptographer;
+import net.ecoparadise.common.CommonConstants;
+import net.ecoparadise.exceptions.CryptographyException;
+import net.ecoparadise.security.CryptographyAlgorithm;
+import net.ecoparadise.security.GlobalCryptogramRepository;
+import net.ecoparadise.security.SecretAlgorithm;
+import net.ecoparadise.security.base.Cryptographer;
 
 /**
  * @author ducbq

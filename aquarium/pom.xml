@@ -10,7 +10,7 @@
     <name>Aquarium - Web administration</name>
 
     <parent>
-		<groupId>net.aquarium</groupId>
+		<groupId>net.ecoparadise</groupId>
 		<artifactId>aquariums</artifactId>
         <version>0.1</version>
         <relativePath>../pom.xml</relativePath>
@@ -85,6 +85,13 @@
             <artifactId>aquarium-css</artifactId>
             <version>${project.version}</version>
         </dependency>
+        
+		<dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>aquarium-shared-domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
 
 		<!-- analytics -->
 		<dependency>

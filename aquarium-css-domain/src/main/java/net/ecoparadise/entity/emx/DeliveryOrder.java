@@ -1,0 +1,168 @@
+
+package net.ecoparadise.entity.emx;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import lombok.Data;
+import net.ecoparadise.framework.validation.InDateRange;
+
+/**
+ * 
+ * @author MOHAMMED BOUNAGA
+ * 
+ * github.com/medbounaga
+ */
+@Data
+@Entity
+@Table(name = "delivery_order")
+@NamedQueries({
+    @NamedQuery(name = "DeliveryOrder.findByPartner", query = "SELECT d FROM DeliveryOrder d WHERE d.partner.id = :partnerId AND d.type = :type "),
+    @NamedQuery(name = "DeliveryOrder.countByPartner", query = "SELECT COUNT(d) FROM DeliveryOrder d WHERE d.partner.id = :partnerId AND d.type = :type "),
+    @NamedQuery(name = "DeliveryOrder.countByBackOrder", query = "SELECT COUNT(d) FROM DeliveryOrder d WHERE d.backOrder.id = :id"),
+    @NamedQuery(name = "DeliveryOrder.findByBackOrder", query = "SELECT d FROM DeliveryOrder d WHERE d.backOrder.id = :id"),
+    @NamedQuery(name = "DeliveryOrder.findInDelivery", query = "SELECT d FROM DeliveryOrder d WHERE d.type = :type"),
+    @NamedQuery(name = "DeliveryOrder.findOutDelivery", query = "SELECT d FROM DeliveryOrder d WHERE d.type = :type"),
+    @NamedQuery(name = "DeliveryOrder.findAll", query = "SELECT d FROM DeliveryOrder d"),
+    @NamedQuery(name = "DeliveryOrder.findBySaleOrder", query = "SELECT d FROM DeliveryOrder d WHERE d.saleOrder.id = :id"),
+    @NamedQuery(name = "DeliveryOrder.findByPurchaseOrder", query = "SELECT d FROM DeliveryOrder d WHERE d.purchaseOrder.id = :id"),
+    @NamedQuery(name = "DeliveryOrder.findById", query = "SELECT d FROM DeliveryOrder d WHERE d.id = :id"),
+    @NamedQuery(name = "DeliveryOrder.findByDate", query = "SELECT d FROM DeliveryOrder d WHERE d.date = :date"),
+    @NamedQuery(name = "DeliveryOrder.findByOrigin", query = "SELECT d FROM DeliveryOrder d WHERE d.origin = :origin"),
+    @NamedQuery(name = "DeliveryOrder.findByName", query = "SELECT d FROM DeliveryOrder d WHERE d.name = :name"),
+    @NamedQuery(name = "DeliveryOrder.findByActive", query = "SELECT d FROM DeliveryOrder d WHERE d.active = :active")})
+public class DeliveryOrder implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "date")
+    @InDateRange
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+
+    @Size(max = 64, message = "{LongString}")
+    @Column(name = "origin")
+    private String origin;
+
+    @Size(max = 64, message = "{LongString}")
+    @Column(name = "name")
+    private String name;
+
+    @Size(max = 64, message = "{LongString}")
+    @Column(name = "delivery_method")
+    private String deliveryMethod;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(max = 64, message = "{LongString}")
+    @Column(name = "state")
+    private String state;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(max = 64, message = "{LongString}")
+    @Column(name = "type")
+    private String type;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "active")
+    private Boolean active;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deliveryOrder", fetch = FetchType.EAGER, orphanRemoval=true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<DeliveryOrderLine> deliveryOrderLines;
+
+    @JoinColumn(name = "partner_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Partner partner;
+
+    @ManyToOne
+    @JoinColumn(name = "purchase_id", referencedColumnName = "id")
+    private PurchaseOrder purchaseOrder;
+
+    @ManyToOne
+    @JoinColumn(name = "sale_id", referencedColumnName = "id")
+    private SaleOrder saleOrder;
+
+    @ManyToOne
+    @JoinColumn(name = "back_Order_id", referencedColumnName = "id")
+    private DeliveryOrder backOrder;
+
+    @OneToMany(mappedBy = "backOrder")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<DeliveryOrder> children;
+
+    
+
+    public DeliveryOrder() {
+    }
+
+    public DeliveryOrder(Integer id) {
+        this.id = id;
+    }
+
+    public DeliveryOrder(Date date, String origin, String state, String type, Boolean active, String deliveryMethod, DeliveryOrder backOrder,Partner partner, SaleOrder saleOrder) {
+
+        this.date = date;
+        this.origin = origin;
+        this.state = state;
+        this.type = type;
+        this.active = active;
+        this.partner = partner;
+        this.saleOrder = saleOrder;
+        this.deliveryMethod = deliveryMethod;
+        this.backOrder = backOrder;
+
+    }
+    
+     public DeliveryOrder(Date date, String origin, String state, String type, Boolean active, String deliveryMethod, DeliveryOrder backOrder,Partner partner, PurchaseOrder purchaseOrder) {
+
+        this.date = date;
+        this.origin = origin;
+        this.state = state;
+        this.type = type;
+        this.active = active;
+        this.partner = partner;
+        this.purchaseOrder = purchaseOrder;
+        this.deliveryMethod = deliveryMethod;
+        this.backOrder = backOrder;
+
+    }
+
+    @Override
+    public String toString() {
+        return "DeliveryOrder[ id=" + id + " ]";
+    }
+
+}

@@ -10,13 +10,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import net.aquarium.common.ListUtility;
-import net.aquarium.domain.entity.Attachment;
-import net.aquarium.domain.model.dto.FacadeCore;
-import net.aquarium.entity.stock.InventoryCore;
-import net.aquarium.entity.stock.InventoryDetail;
-import net.aquarium.entity.stock.InventoryImage;
-import net.aquarium.entity.stock.InventoryPrice;
+import net.ecoparadise.common.ListUtility;
+import net.ecoparadise.domain.entity.Attachment;
+import net.ecoparadise.domain.model.dto.FacadeCore;
+import net.ecoparadise.entity.stock.InventoryCore;
+import net.ecoparadise.entity.stock.InventoryDetail;
+import net.ecoparadise.entity.stock.InventoryImage;
+import net.ecoparadise.entity.stock.InventoryPrice;
 
 /**
  * @author ducbq
