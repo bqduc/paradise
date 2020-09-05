@@ -8,22 +8,24 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>aquarium-shared-domain</artifactId>
+    <artifactId>aquarium-cbs-services</artifactId>
     <packaging>jar</packaging>
-    <name>Aquarium - Repository of domain objects</name>
-    <description>Module that contains all biz objects. </description>
+    <name>Aquarium - Cross Business Synergy Services</name>
+    <description>Module that contains all services for clinical trial and data management in the project. </description>
 
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>utility</artifactId>
+			<artifactId>aquarium-cbs-repository</artifactId>
 			<version>${project.version}</version>
-		</dependency>	
+		</dependency>
+
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>aquarium-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>	
+
     <dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
@@ -49,6 +51,20 @@
 			<version>${version.lombok}</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- <dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>${version.javax.faces-api}</version>
+			<scope>compile</scope>
+		</dependency> -->
+
+    <!-- <dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces</artifactId>
+        <version>${version.primefaces}</version>
+        <scope>compile</scope>
+    </dependency>		 -->
 
 	</dependencies>
 </project>

@@ -77,8 +77,8 @@
 		<module>aquarium-auth-domain</module>
 		<module>aquarium-auth</module>
 		<module>aquarium-archiving</module>
-		<module>aquarium-shared-domain</module>
-		<module>aquarium-shared-services</module>
+		<module>aquarium-cbs-repository</module>
+		<module>aquarium-cbs-services</module>
 		<module>aquarium-autonomous</module>
 		<module>aquarium</module>
     </modules>

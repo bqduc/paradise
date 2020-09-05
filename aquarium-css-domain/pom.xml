@@ -28,7 +28,7 @@
 
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>aquarium-shared-domain</artifactId>
+			<artifactId>aquarium-cbs-repository</artifactId>
 			<version>${project.version}</version>
 		</dependency>	
 
